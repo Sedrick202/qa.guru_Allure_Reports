@@ -15,9 +15,11 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.By.linkText;
 import static org.openqa.selenium.By.partialLinkText;
 
-public class QaGitTest {
+public class QaGitTestWithListener {
     @Test
     public void gitTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         open("https://github.com/");
         $(".header-search-input").click();
         $(".header-search-input").setValue("eroshenkoam/allure-example").pressEnter();
